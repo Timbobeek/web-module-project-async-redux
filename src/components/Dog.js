@@ -23,6 +23,9 @@ const Dog = ({ dog, isFetching, error, dispatch}) => {
         console.log(res.data);
         dispatch(fetchSuccess(res.data.message))
       })
+      .catch(err=>{
+        dispatch(fetchFail(err))
+      })
 
   }
 
@@ -30,7 +33,7 @@ const Dog = ({ dog, isFetching, error, dispatch}) => {
     <div>
       <div>
       <h2>Here is a nice doggo for you!</h2>
-      <img src = {dog}/>
+      <img src = {dog}/>   {/*dog.picture would not fetch new pics while dog was an obj with a pic in it */}
       </div>
     <button onClick={handleClick}>WANT ANOTHER DOGGO</button>
     </div>
