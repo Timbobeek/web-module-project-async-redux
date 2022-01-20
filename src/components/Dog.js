@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 
-import { fetchStart, fetchSuccess, fetchFail } from '../actions';
+import { getDog } from '../actions';
 
 import axios from 'axios';
 
 
 const Dog = ({ dog, isFetching, error, dispatch}) => {
+
+  useEffect(()=>{
+    dispatch(getDog());
+  },[])
 
   if (error) {
     return <p>Error!!! ---> {error}</p>;
@@ -17,16 +21,7 @@ const Dog = ({ dog, isFetching, error, dispatch}) => {
   }
 
   const handleClick = () => {
-     dispatch(fetchStart());
-     axios.get('https://dog.ceo/api/breeds/image/random')
-      .then(res => {
-        console.log(res.data);
-        dispatch(fetchSuccess(res.data.message))
-      })
-      .catch(err=>{
-        dispatch(fetchFail(err))
-      })
-
+     dispatch(getDog())
   }
 
   return(
