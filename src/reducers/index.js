@@ -1,7 +1,9 @@
 import { FETCH_START, FETCH_FAIL, FETCH_SUCCESS} from './../actions';
 
 const initialState = {
-  dog: "https://images.dog.ceo/breeds/chihuahua/n02085620_3677.jpg",   /// started working once i turned this prop into a string
+  dog:{
+    picture: "https://images.dog.ceo/breeds/chihuahua/n02085620_3677.jpg"
+  }, 
   isFetching: false,
   error: ''
 };
